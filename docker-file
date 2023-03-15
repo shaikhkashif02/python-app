@@ -1,0 +1,17 @@
+# Set the base image to Python 3.9
+FROM python:3.9-slim-buster
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the application files to the container
+COPY app.py requirements.txt ./
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the port on which the application will run
+EXPOSE 5000
+
+# Start the application
+CMD ["python", "app.py"]
