@@ -1,0 +1,17 @@
+import requests
+
+url = "https://example.com/submit-form"  # replace with the URL of the form submission endpoint
+name = "John Smith"  # replace with the name you want to submit
+phone = "1234567890"  # replace with the phone number you want to submit
+
+payload = {
+    "name": name,
+    "phone": phone
+}
+
+response = requests.post(url, data=payload)
+
+if response.status_code == 200:
+    print("Form submitted successfully!")
+else:
+    print("Error submitting form:", response.status_code)
