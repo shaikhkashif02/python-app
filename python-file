@@ -1,17 +1,34 @@
-import requests
+import tkinter as tk
 
-url = "https://example.com/submit-form"  # replace with the URL of the form submission endpoint
-name = "John Smith"  # replace with the name you want to submit
-phone = "1234567890"  # replace with the phone number you want to submit
+def submit_form():
+    name = name_entry.get()
+    phone = phone_entry.get()
+    submit_button.config(text="🔜")
+    submit_button.update()
+    label.config(text=f"Name: {name}, Phone No: {phone}")
+    
+# Create main window
+window = tk.Tk()
+window.title("Form")
 
-payload = {
-    "name": name,
-    "phone": phone
-}
+# Create form fields
+name_label = tk.Label(window, text="Name:")
+name_label.pack()
+name_entry = tk.Entry(window)
+name_entry.pack()
 
-response = requests.post(url, data=payload)
+phone_label = tk.Label(window, text="Phone No:")
+phone_label.pack()
+phone_entry = tk.Entry(window)
+phone_entry.pack()
 
-if response.status_code == 200:
-    print("Form submitted successfully!")
-else:
-    print("Error submitting form:", response.status_code)
+# Create submit button
+submit_button = tk.Button(window, text="Submit", command=submit_form)
+submit_button.pack()
+
+# Create label to display form data
+label = tk.Label(window, text="First fill the form")
+label.pack()
+
+# Start GUI loop
+window.mainloop()
