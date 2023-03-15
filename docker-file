@@ -1,17 +1,17 @@
-# Set the base image to Python 3.9
-FROM python:3.9-slim-buster
+# Use the official Python image as the base image
+FROM python:3.9
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the application files to the container
-COPY app.py requirements.txt ./
+# Copy the Python script to the container
+COPY app.py .
 
-# Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Install the required packages
+RUN pip install tkinter
 
-# Expose the port on which the application will run
-EXPOSE 5000
+# Expose port 80 for the web server
+EXPOSE 80
 
-# Start the application
+# Run the Python script when the container starts
 CMD ["python", "app.py"]
